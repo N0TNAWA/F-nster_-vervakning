@@ -69,10 +69,10 @@ checkEvent.onmessage = function(event) {
 
     var element = document.getElementById("state_" + data.pinId)
     if(data.sensorState == 1) {
-        element.textContent = `State: Open`
+        element.textContent = `State: Open`;
         element.setAttribute("class", "red");
     } else {
-        element.textContent = `State: Closed`
+        element.textContent = `State: Closed`;
         element.setAttribute("class", "green");
     }
 };
@@ -80,6 +80,16 @@ checkEvent.onmessage = function(event) {
 checkEvent.onerror = function(event) {
     console.error(event);
 };
+
+const wifiEvent = new EventSource('db.php');
+
+wifiEvent.onmessage = function(event) {
+    console.log(event);
+}
+
+wifiEvent.onerror = function(event) {
+    console.error(event);
+}
 
 
 setTimeout(() => {
